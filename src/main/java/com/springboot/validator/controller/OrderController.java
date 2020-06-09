@@ -11,6 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/order")
 public class OrderController {
+  @GetMapping("/save")
+  public String save(@RequestBody String json) {
+    Order order = JSON.parseObject(json, Order.class);
+    BeanValidator.validate(order);
+    return order.toString();
+  }
+
   @GetMapping("/add")
   public String add(@RequestBody String json) {
     Order order = JSON.parseObject(json, Order.class);

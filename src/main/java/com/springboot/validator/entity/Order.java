@@ -16,15 +16,20 @@ public class Order implements Serializable {
   @NotNull(message = "订单ID不能为空")
   private Long orderId;
 
+  @NotBlank(message = "订单号不能为空")
   @NotBlank(
       message = "订单号不能为空",
       groups = {Create.class})
   private String orderNo;
 
-  @NotBlank(message = "商品不能为空", groups = Update.class)
+  @NotBlank(
+      message = "商品不能为空",
+      groups = {Create.class, Update.class})
   private String orderGoods;
 
-  @NotNull(message = "商品数量不能为空", groups = Update.class)
+  @NotNull(
+      message = "商品数量不能为空",
+      groups = {Create.class, Update.class})
   private Integer goodsNum;
 
   @NotNull(message = "商品单价不能为空", groups = Update.class)
