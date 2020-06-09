@@ -1,9 +1,11 @@
 package com.springboot.validator.entity;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Data
 public class Order implements Serializable {
@@ -11,21 +13,21 @@ public class Order implements Serializable {
 
   public static interface Create {};
 
-  //  @NotNull(message = "订单ID不能为空")
-  //  private Long orderId;
+  @NotNull(message = "订单ID不能为空")
+  private Long orderId;
 
   @NotBlank(
       message = "订单号不能为空",
       groups = {Create.class})
   private String orderNo;
 
-  /* @NotBlank(message = "商品不能为空", groups = Update.class)
+  @NotBlank(message = "商品不能为空", groups = Update.class)
   private String orderGoods;
 
-  @NotBlank(message = "商品数量不能为空", groups = Update.class)
+  @NotNull(message = "商品数量不能为空", groups = Update.class)
   private Integer goodsNum;
 
-  @NotBlank(message = "商品单价不能为空", groups = Update.class)
+  @NotNull(message = "商品单价不能为空", groups = Update.class)
   @Digits(message = "商品单价只能为数字", integer = 10, fraction = 2, groups = Update.class)
   private Integer price;
 
@@ -42,10 +44,11 @@ public class Order implements Serializable {
 
   @NotBlank(message = "邮箱不能为空", groups = Update.class)
   @Email(message = "邮箱格式不对", groups = Update.class)
-  private String email;*/
+  private String email;
 
-  //  @Future(message = "创建时间必须是将来的时间", groups = Update.class)
-  //  private Date createTime;
+  @NotNull(message = "创建时间不能为空", groups = Update.class)
+  @Future(message = "创建时间必须是将来的时间", groups = Update.class)
+  private Date createTime;
 
   /* public Long getOrderId() {
       return orderId;
