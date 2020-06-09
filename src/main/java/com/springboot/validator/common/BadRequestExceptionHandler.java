@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 @RestControllerAdvice
 public class BadRequestExceptionHandler extends ResponseEntityExceptionHandler {
   /*  @Override
@@ -42,16 +43,17 @@ public class BadRequestExceptionHandler extends ResponseEntityExceptionHandler {
     public Object dispose(final HttpServletRequest request, final HttpServletResponse response,
                           final Exception ex) {
 
-        Map<String,String> map = new HashMap<String,String>();
+        Map<String, String> map = new HashMap<String, String>();
         map.put("mgs", ex.getMessage());
         map.put("code", "0");
         return map;
 
     }
+
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(NotFoundException.class)
     public Object handleNotFoundException(NotFoundException ex) {
-        Map<String,String> map = new HashMap<String,String>();
+        Map<String, String> map = new HashMap<String, String>();
         map.put("mgs", ex.getMessage());
         map.put("code", String.valueOf(HttpStatus.NOT_FOUND.value()));
         return map;

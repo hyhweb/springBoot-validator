@@ -17,7 +17,7 @@ import java.util.Set;
 public class UserController {
 
     @GetMapping("/add")
-    public User addUser( User user){
+    public User addUser(User user) {
 
         BeanValidator.validate(user);
         /*if (result.hasErrors()) {
@@ -26,7 +26,6 @@ public class UserController {
         return user;
 
     }
-
 
 
 }
